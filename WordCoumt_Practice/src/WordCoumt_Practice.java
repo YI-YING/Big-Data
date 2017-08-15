@@ -45,8 +45,8 @@ public class WordCoumt_Practice {
         return sOldString;
     }
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        BufferedReader br = new BufferedReader(new FileReader("D:/Github/Big-Data/WordCoumt_Practice/src/big.txt"));
-        
+        BufferedReader br = new BufferedReader(new FileReader("D:/Github/Big-Data/WordCoumt_Practice/src/big5.txt"));
+
         String sTemp;
         while ((sTemp = br.readLine()) != null) {
             sTemp = sTemp.trim();
@@ -60,6 +60,16 @@ public class WordCoumt_Practice {
                 }
             }
         }
+        br.close();
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter("D:/Github/Big-Data/WordCoumt_Practice/src/result1.txt"));
+        for (Map.Entry<String, Integer> entry : hmWordCount.entrySet()) {
+            String key = entry.getKey();
+            int iCount = entry.getValue();
+            bw.write(key + " : " + iCount);
+            bw.newLine();
+        }
+        bw.close();
         
         System.out.println(hmWordCount);
     }
